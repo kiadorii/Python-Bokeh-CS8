@@ -14,9 +14,12 @@ print(graph_data.vertexes)
 N = 10
 node_indices = list(range(N))
 
-debug_pallete = Spectral8
-debug_pallete.append('#ff0000')
-debug_pallete.append('#0000ff')
+# debug_pallete = Spectral8
+# debug_pallete.append('#ff0000')
+# debug_pallete.append('#0000ff')
+color_list = []
+for i in range(N):
+    color_list.append(graph_data.vertexes[i].color)
 
 plot = figure(title='Graph Layout Demonstration', x_range=(0, 500), y_range=(0, 500),
               tools='', toolbar_location=None)
