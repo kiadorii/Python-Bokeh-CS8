@@ -17,7 +17,7 @@ class Graph:
     
     def debug_create_test_data(self):
         debug_vertex_1 = Vertex('t1', x=40, y=40)
-        debug_vertex_2 = Vertex('t2', x=140, y=140)
+        debug_vertex_2 = Vertex('t2', x=200, y=140)
         debug_vertex_3 = Vertex('t3', x=300, y=300)
         
         debug_edge_1 = Edge(debug_vertex_2)
