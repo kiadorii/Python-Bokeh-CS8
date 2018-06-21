@@ -16,6 +16,7 @@ class Graph:
     def __init__(self):
         self.vertexes = []
     
+    # TODO: Fix so that vertex go both ways
     def debug_create_test_data(self):
         debug_vertex_1 = Vertex('t1', x=40, y=40)
         debug_vertex_2 = Vertex('t2', x=200, y=140)
