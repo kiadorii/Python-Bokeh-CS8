@@ -18,9 +18,6 @@ graph_data.bfs(graph_data.vertexes[0])
 N = len(graph_data.vertexes)
 node_indices = list(range(N))
 
-# debug_pallete = Spectral8
-# debug_pallete.append('#ff0000')
-# debug_pallete.append('#0000ff')
 color_list = []
 for vertex in graph_data.vertexes:
     color_list.append(vertex.color)
@@ -54,18 +51,10 @@ graph.edge_renderer.data_source.data = dict(
 #     start=[0]*N, # a list if vertex indexes to start edges from
 #     end=node_indices) # a list of vertex index to end edges at
 
-### start of layout code
-# Looks like this is setting the positions of the vertexes
-# circ = [i*2*math.pi/8 for i in node_indices] # - we don't want a circle
-# x = [math.cos(i) for i in circ] # This is assembling a list for us
-# y = [math.sin(i) for i in circ]
-# val = [v.value[::] for v in graph_data.vertexes]
+# Start of layout code
 x = [v.pos['x'] for v in graph_data.vertexes]
 y = [v.pos['y'] for v in graph_data.vertexes]
 
-# source = ColumnDataSource(data=dict(x, y, graph_data.debug_create_test_data))
-# labels = LabelSet(x='weight', y='height', text='names', level='glyph',
-#               x_offset=5, y_offset=5, source=source, render_mode='canvas')
 graph_layout = dict(zip(node_indices, zip(x, y)))
 graph.layout_provider = StaticLayoutProvider(graph_layout=graph_layout)
 
