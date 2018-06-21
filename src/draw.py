@@ -27,7 +27,7 @@ graph = GraphRenderer()
 
 graph.node_renderer.data_source.add(node_indices, 'index')
 graph.node_renderer.data_source.add(color_list, 'color')
-graph.node_renderer.glyph = Circle(height=20, width=25, fill_color='color')
+graph.node_renderer.glyph = Circle(radius=20, fill_color='color')
 
 # this is drawing the edges from start to end
 # This retrieves the vertexes dynamically (rather than static)
@@ -66,12 +66,6 @@ graph.layout_provider = StaticLayoutProvider(graph_layout=graph_layout)
 
 plot.renderers.append(graph)
 
-
-source = ColumnDataSource(data=dict(height=[66, 71, 72, 68, 58, 62],
-                                    weight=[165, 189, 220, 141, 260, 174],
-                                    names=['Mark', 'Amir', 'Matt', 'Greg',
-                                           'Owen', 'Juan']))
-
 # Create a new dictionary to use as a data source, with three lists in it, ordered in the same way as vertexes
 # List of x values 
 # List of y values
@@ -80,7 +74,7 @@ value = [v.value for v in graph_data.vertexes] # Possible optimization: We run t
 label_source = ColumnDataSource(data=dict(x = x, y = y, v = value))
 
 labels = LabelSet(x='x', y='y', text='v', level='glyph',
-              x_offset=5, y_offset=5, source=source, render_mode='canvas')
+              x_offset=5, y_offset=5, source=label_source, render_mode='canvas')
 
 # TODO: Investigate plot.add_layout vs. plot.renderers.append
 plot.add_layout(labels)
