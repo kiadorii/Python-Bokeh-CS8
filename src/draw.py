@@ -32,8 +32,8 @@ graph.node_renderer.glyph = Oval(height=20, width=25, fill_color='color')
 # this is drawing the edges from start to end
 
 graph.edge_renderer.data_source.data = dict(
-    start=[0]*N, # this is a list of some kind that has to do with starting points
-    end=node_indices) # this is a list of some kind thathas to do with ending points
+    start=[0]*N, # a list if vertex indexes to start edges from
+    end=node_indices) # a list of vertex index to end edges at
 
 ### start of layout code
 # Looks like this is setting the positions of the vertexes
