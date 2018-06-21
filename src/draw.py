@@ -30,10 +30,24 @@ graph.node_renderer.data_source.add(color_list, 'color')
 graph.node_renderer.glyph = Oval(height=20, width=25, fill_color='color')
 
 # this is drawing the edges from start to end
+# This retrieves the vertexes dynamically (rather than static)
+start_indexes = []
+end_indexes = []
+
+for start_indexes, vertex in enumerate(graph_data.vertexes): # use enumerate to get the indexes
+    for e in vertex.edges:
+        start_indexes.append(start_indexes)
+        end_indexes.append(graph_data.vertexes.index(e.destination))
 
 graph.edge_renderer.data_source.data = dict(
-    start=[0]*N, # a list if vertex indexes to start edges from
-    end=node_indices) # a list of vertex index to end edges at
+    start=start_indexes,
+    end=end_indexes
+)
+
+# Static form
+# graph.edge_renderer.data_source.data = dict(
+#     start=[0]*N, # a list if vertex indexes to start edges from
+#     end=node_indices) # a list of vertex index to end edges at
 
 ### start of layout code
 # Looks like this is setting the positions of the vertexes
