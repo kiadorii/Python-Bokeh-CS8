@@ -7,6 +7,10 @@ from bokeh.palettes import Spectral8
 
 from graph import *
 
+WIDTH = 500
+HEIGHT = 500 # TODO: Currently graph renders square to these numbers
+CIRCLE_SIZE = 30
+
 graph_data = Graph()
 graph_data.debug_create_test_data()
 
@@ -20,14 +24,14 @@ color_list = []
 for vertex in graph_data.vertexes:
     color_list.append(vertex.color)
 
-plot = figure(title='Graph Layout Demonstration', x_range=(0, 500), y_range=(0, 500),
+plot = figure(title='Graph Layout Demonstration', x_range=(0, WIDTH), y_range=(0, HEIGHT),
               tools='', toolbar_location=None)
 
 graph = GraphRenderer()
 
 graph.node_renderer.data_source.add(node_indices, 'index')
 graph.node_renderer.data_source.add(color_list, 'color')
-graph.node_renderer.glyph = Circle(radius=20, fill_color='color')
+graph.node_renderer.glyph = Circle(size=CIRCLE_SIZE, fill_color='color')
 
 # this is drawing the edges from start to end
 # This retrieves the vertexes dynamically (rather than static)
