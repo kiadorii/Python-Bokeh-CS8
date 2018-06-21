@@ -1,4 +1,5 @@
 # We are re-creating graph.js to in the it's python form
+import random
 
 class Edge:
     def __init__(self, destination):
@@ -28,3 +29,26 @@ class Graph:
         debug_vertex_3.edges.append(debug_edge_2)
 
         self.vertexes.extend([debug_vertex_1, debug_vertex_2, debug_vertex_3, debug_vertex_4])
+
+    def bfs(self, start):
+        random_color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+
+        queue = []
+        found = []
+
+        queue.append(start)
+        found.append(start)
+
+        start.color = random_color
+
+        while len(queue) > 0:
+            v = queue[0]
+            for edge in v.edges:
+                if edge.destination not in found:
+                    found.append(edge.destination)
+                    queue.append(edge.destination)
+                    edge.destination.color = random_color
+            
+            queue.pop(0) # TODO: Look into collections.dequeue
+        
+        return found
