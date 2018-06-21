@@ -73,8 +73,8 @@ plot.renderers.append(graph)
 value = [v.value for v in graph_data.vertexes] # Possible optimization: We run through this loop three times
 label_source = ColumnDataSource(data=dict(x = x, y = y, v = value))
 
-labels = LabelSet(x='x', y='y', text='v', level='glyph',
-              x_offset=5, y_offset=5, source=label_source, render_mode='canvas')
+labels = LabelSet(x='x', y='y', text='v', level='glyph', 
+    source=label_source, render_mode='canvas', text_align='center', text_baseline='middle')
 
 # TODO: Investigate plot.add_layout vs. plot.renderers.append
 plot.add_layout(labels)
